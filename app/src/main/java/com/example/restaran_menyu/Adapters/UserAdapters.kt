@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.item_menyu.view.*
 
 class UserAdapters(val data:ArrayList<UserData>):RecyclerView.Adapter<UserAdapters.ViewHolder>() {
     private var listener:((Int,String)->Unit)? = null
+
     data class ViewHolder(val view: View):RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,7 +22,7 @@ class UserAdapters(val data:ArrayList<UserData>):RecyclerView.Adapter<UserAdapte
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.apply {
-            val image: CircleImageView =findViewById(R.id.image)
+            val image: CircleImageView =findViewById(R.id.Image)
             image.setBackgroundResource(data[position].image!!)
             data[position].image?.let { image.setCircleBackgroundColorResource(it) }
             Food_name?.text = data[position].food_name
@@ -31,9 +32,6 @@ class UserAdapters(val data:ArrayList<UserData>):RecyclerView.Adapter<UserAdapte
 
     override fun getItemCount(): Int {
         return data.size
-    }
-    fun setOnclilcListen(f:(Int,String)->Unit){
-        listener= f
     }
 
 }
